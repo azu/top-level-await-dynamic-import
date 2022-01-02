@@ -6,15 +6,12 @@
 </head>
 <body>
 <script>
-    // require Module Context for top-level await
+    // Module
     const src = `
 const confetti = await import('https://cdn.skypack.dev/canvas-confetti');
 confetti.default();
 `;
-    // eval as Module
-    import(`data:text/javascript;charset=utf-8, ${encodeURIComponent(src)}`).then(mod => {
-        console.log(mod);
-    });
+    eval(src);
 </script>
 </body>
 </html>
