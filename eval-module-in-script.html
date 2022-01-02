@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>top-level-await-dynamic-import in script</title>
+</head>
+<body>
+<script>
+    // Module
+    const src = `
+const confetti = await import('https://cdn.skypack.dev/canvas-confetti');
+confetti.default();
+`;
+    // ↓こっちもOK
+    // const data = "data:text/javascript;charset=utf-8," + encodeURIComponent(src);
+    import(`data:text/javascript;charset=utf-8, ${encodeURIComponent(src)}`).then(mod => {
+        console.log(mod);
+    });
+</script>
+</body>
+</html>
